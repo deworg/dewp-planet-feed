@@ -15,9 +15,9 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 ## Changelog
 
 ### 0.2
-* Renamed plugin to __DEWP Planet Feed__ and PHP class to `DEWP_Planet_Feed`.
-* Marked plugin as __Beta__.
+* Enhancement: lower priority for publishing checkbox.
+* Clean-up: Renamed plugin to __DEWP Planet Feed__ and PHP class to `DEWP_Planet_Feed`.
 
 ### 0.1
-* Initial fork from [original class](https://github.com/ocean90/wpgrafie-theme/blob/master/classes/class-ds-wpgrafie-wp-planet-feed.php)
+* Initial fork from [original class](https://github.com/ocean90/wpgrafie-theme/blob/master/classes/class-ds-wpgrafie-wp-planet-feed.php).
 * Added de/activation hooks + UI candy.
