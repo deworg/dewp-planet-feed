@@ -7,3 +7,5 @@
 
 ## Description ##
 Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish_ meta box in order to explicitly add a post to that custom feed.
+
+![Screenshot (GIF)](https://github.com/deworg/dewp-planet-feed/blob/master/screenshot.gif?raw=true)
