@@ -1,9 +1,9 @@
 <?php
 defined( 'ABSPATH' ) or die( 'You know better.' );
 /**
- * Plugin Name:       WordPress Planet Feed
+ * Plugin Name:       DEWP Planet Feed (Beta)
  * Description:       Generates a custom feed “dewp-planet” for posts. Adds a checkbox to the Publish meta box in order to explicitly add a post to that custom feed.
- * Version:           0.1
+ * Version:           0.2
  * Author:            dewp#planet team
  * Author URI:        https://dewp.slack.com/messages/planet/
  * Plugin URI:        https://github.com/deworg/dewp-planet-feed
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
  */
  register_activation_hook(
  	__FILE__,
- 	array( 'WP_Planet_Feed', 'activation' )
+ 	array( 'DEWP_Planet_Feed', 'activation' )
  );
 
 /**
@@ -38,10 +38,10 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
  */
 register_deactivation_hook(
 	__FILE__,
-	array( 'WP_Planet_Feed', 'deactivation' )
+	array( 'DEWP_Planet_Feed', 'deactivation' )
 );
 
-class WP_Planet_Feed {
+class DEWP_Planet_Feed {
 
 	/**
 	 * Allowed post types.
@@ -264,4 +264,4 @@ class WP_Planet_Feed {
 }
 
 // Hallo!
-new WP_Planet_Feed();
+new DEWP_Planet_Feed();
