@@ -1,0 +1,45 @@
+/**
+ * DEWP Planet Plugin
+ */
+.dewp-planet__add-to-feed {
+	margin: -4px 10px 0 0;
+}
+.dewp-planet__help-link {
+	margin: 0 0 0 -5px;
+	padding: 10px;
+	position: relative;
+	text-decoration: none;
+	/*vertical-align: middle;*/
+}
+/* Invisible states */
+.dewp-planet__label-notice {
+	display: block;
+	max-height: 1px;
+	overflow: hidden;
+	-webkit-transition: padding 200ms linear;
+	   -moz-transition: padding 200ms linear;
+	    -ms-transition: padding 200ms linear;
+	     -o-transition: padding 200ms linear;
+	        transition: padding 200ms linear;
+}
+.dewp-planet__add-to-feed + .dewp-planet__label-text .dashicons-warning {
+	visibility: hidden;
+}
+/* Visibile states */
+.dewp-planet__add-to-feed:checked + .dewp-planet__label-text .dashicons-warning {
+	margin: -1px 5px 0 -2px;
+	position: relative;
+	visibility: visible;
+}
+.dewp-planet__add-to-feed:checked + .dewp-planet__label-text .dewp-planet__label-notice {
+	max-height: 10em;
+	padding: 6px 0 8px;
+}
+/* Colors */
+.dewp-planet__help-link,
+.dewp-planet__add-to-feed:disabled + .dewp-planet__label-text {
+	color: #b4b9be;
+}
+.dewp-planet__add-to-feed:checked + .dewp-planet__label-text .dashicons-warning {
+	color: #dc3232;
+}

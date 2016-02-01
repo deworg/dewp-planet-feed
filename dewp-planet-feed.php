@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
 /**
  * Plugin Name:       DEWP Planet Feed (Beta)
  * Description:       Generates a custom feed “dewp-planet” for posts. Adds a checkbox to the Publish meta box in order to explicitly add a post to that custom feed.
- * Version:           0.2-beta2
+ * Version:           0.3-beta
  * Author:            dewp#planet team
  * Author URI:        https://dewp.slack.com/messages/planet/
  * Plugin URI:        https://github.com/deworg/dewp-planet-feed
@@ -27,6 +27,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
 
 /**
  * Set marker for activation.
+ * @since 0.1
  */
  register_activation_hook(
  	__FILE__,
@@ -35,6 +36,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
 
 /**
  * Flush rewrite rules.
+ * @since 0.1
  */
 register_deactivation_hook(
 	__FILE__,
@@ -93,7 +95,7 @@ class DEWP_Planet_Feed {
 
 	/**
 	 * Set marker for activation.
-	 * @since 0.1
+	 * @since  0.1
 	 * @return void
 	 */
 	public static function activation() {
@@ -102,7 +104,7 @@ class DEWP_Planet_Feed {
 
 	/**
 	 * Flush rewrite rules and delete option on deactivation.
-	 * @since 0.1
+	 * @since  0.1
 	 * @return void
 	 */
 	public static function deactivation() {
@@ -112,7 +114,7 @@ class DEWP_Planet_Feed {
 
 	/**
 	 * Initialize plugin.
-	 * @since 0.1
+	 * @since  0.1
 	 * @return void
 	 */
 	public static function init() {
@@ -129,13 +131,19 @@ class DEWP_Planet_Feed {
 		add_action( 'post_submitbox_misc_actions', array( __CLASS__, 'add_checkbox' ), 9 );
 		add_action( 'save_post', array( __CLASS__, 'save_checkbox' ) );
 
+		// Enqueue admin scripts and styles.
+		add_action(
+			'admin_enqueue_scripts',
+			array( __CLASS__, 'admin_enqueue_scripts' )
+		);
+
 		// Get feed content.
 		add_action( 'pre_get_posts', array( __CLASS__, 'feed_content' ) );
 	}
 
 	/**
 	 * Load feed template.
-	 * @since 0.1
+	 * @since  0.1
 	 * @return void
 	 */
 	public static function feed_template() {
@@ -144,7 +152,7 @@ class DEWP_Planet_Feed {
 
 	/**
 	 * Add checkbox to Publish Post meta box.
-	 * @since 0.1
+	 * @since  0.1
 	 * @return void
 	 */
 	public static function add_checkbox() {
@@ -161,53 +169,40 @@ class DEWP_Planet_Feed {
 		// This actually defines whether post will be listed in our feed.
 		$value = get_post_meta( $post->ID, '_wpf_show_in_dewp_planet_feed', true );
 
-		/**
-		 * Filterable label text for checkbox. (Skipped i18n for now.)
-		 * @since 0.1
-		 */
-		$label_text = apply_filters(
-			'wp_planet_feed__checkbox_label',
-			sprintf(
-				'<span class="wp-panet-feed__label-text">%1$s <span class="dashicons dashicons-warning" aria-hidden="true"></span><span class="screen-reader-text"><strong>%2$s</strong></span></span>',
-				'Im DEWP-Planet anzeigen',
-				'Erscheint in allen deutschsprachigen WordPress-Dashboards!'
-			)
-		);
+		ob_start();
+		include trailingslashit( dirname( __FILE__ ) ) . 'inc/pub-section.php';
+		$pub_section = ob_get_clean();
 
-		// Scoped inline styles for now, sue me. WP Core colors FTW.
-		?>
-		<div class="misc-pub-section wp-planet-feed">
-			<style type="text/css" scope>
-				input.wpf-show-in-dewp-planet-feed {
-					margin: -4px 10px 0 0;
-				}
-				input.wpf-show-in-dewp-planet-feed + span.wp-panet-feed__label-text span.dashicons-warning,
-				input.wpf-show-in-dewp-planet-feed:disabled + span.wp-panet-feed__label-text,
-				input.wpf-show-in-dewp-planet-feed:disabled + span.wp-panet-feed__label-text span.dashicons-warning {
-					color: #b4b9be;
-				}
-				input.wpf-show-in-dewp-planet-feed:checked + span.wp-panet-feed__label-text span.dashicons-warning {
-					color: #dc3232;
-				}
-				input.wpf-show-in-dewp-planet-feed:checked + span.wp-panet-feed__label-text span.screen-reader-text {
-					display: block;
-					height: auto;
-					padding: 6px 0 8px;
-					position: static;
-					width: auto;
-				}
-			</style>
-			<label for="wpf-show-in-dewp-planet-feed">
-				<input type="checkbox" id="wpf-show-in-dewp-planet-feed" name="wpf-show-in-dewp-planet-feed" class="wpf-show-in-dewp-planet-feed" <?php checked( $value ); disabled( $maybe_enabled, false ); ?> value="1" />
-				<?php print $label_text; ?>
-			</label>
-		</div>
-		<?php
+		echo $pub_section;
+	}
+
+	/**
+	 * Register and enqueue admin scripts and styles.
+	 * @since  0.3
+	 * @param  string $hook Current admin page
+	 * @return return       Current admin page
+	 */
+	public static function admin_enqueue_scripts( $hook ) {
+		if ( 'post.php' !== $hook && 'post-new.php' !== $hook )
+			return;
+
+		$file_data  = get_file_data( __FILE__, array( 'v' => 'Version' ) );
+		$assets_url = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/';
+
+		// CSS
+		wp_register_style(
+			'dewp-planet-post', $assets_url . 'css/post.css',
+			array( 'edit' ),
+			$file_data['v']
+		);
+		wp_enqueue_style( 'dewp-planet-post' );
+
+		return $hook;
 	}
 
 	/**
 	 * Save option value to post meta.
-	 * @since 0.1
+	 * @since  0.1
 	 * @param  integer $post_id ID of current post
 	 * @return integer          ID of current post
 	 */
@@ -228,7 +223,7 @@ class DEWP_Planet_Feed {
 		if ( ! current_user_can( self::$capability ) ) {
 			return $post_id;
 		}
-		if ( empty( $_POST['wpf-show-in-dewp-planet-feed'] ) ) {
+		if ( empty( $_POST['dewp-planet__add-to-feed'] ) ) {
 			delete_post_meta( $post_id, '_wpf_show_in_dewp_planet_feed' );
 		} else {
 			add_post_meta( $post_id, '_wpf_show_in_dewp_planet_feed', 1, true );
@@ -239,6 +234,7 @@ class DEWP_Planet_Feed {
 
 	/**
 	 * Set feed content.
+	 * @since  0.1
 	 * @param  object $query WP_Query object
 	 * @return object        Altered WP_Query object
 	 */

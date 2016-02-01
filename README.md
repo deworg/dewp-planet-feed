@@ -14,6 +14,12 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 
 ## Changelog
 
+### 0.3
+* Enhancement: added help link to Post screen option.
+* Enhancement: added About document.
+* Architecture: moved code for Post screen option to separate file.
+* Architecture: moved inline CSS to separate file.
+
 ### 0.2
 * Enhancement: lower priority for publishing checkbox.
 * Clean-up: Renamed plugin to __DEWP Planet Feed__ and PHP class to `DEWP_Planet_Feed`.
