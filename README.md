@@ -1,7 +1,7 @@
 # DEWP Planet Feed #
 * Contributors:      Florian Brinkmann, Caspar Hübinger, Dominik Schilling
 * Requires at least: 3.8
-* Tested up to:      4.4.1
+* Tested up to:      4.4.2
 * License:           GPLv3
 * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,6 +13,9 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 ---
 
 ## Changelog
+
+### 0.4
+* Fix: changed dependency for admin stylesheet from `edit` to `wp-admin`.
 
 ### 0.3
 * Enhancement: added help link to Post screen option.

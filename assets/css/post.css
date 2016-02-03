@@ -9,13 +9,13 @@
 	padding: 10px;
 	position: relative;
 	text-decoration: none;
-	/*vertical-align: middle;*/
 }
 /* Invisible states */
 .dewp-planet__label-notice {
 	display: block;
 	max-height: 1px;
 	overflow: hidden;
+	padding: 0;
 	-webkit-transition: padding 200ms linear;
 	   -moz-transition: padding 200ms linear;
 	    -ms-transition: padding 200ms linear;
