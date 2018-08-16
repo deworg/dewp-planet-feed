@@ -1,3 +1,4 @@
 .DS_STORE
 *.bak
 node_modules/
+assets/js/functions.js
