@@ -1,2 +1,3 @@
 .DS_STORE
 *.bak
+node_modules/
