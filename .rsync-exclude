@@ -1,0 +1,9 @@
+- .git/
+- node_modules/
+- dewp-planet-feed/
+- assets/js/src
+- package.json
+- package-lock.json
+- webpack.config.production.js
+- webpack.config.js
+- .*

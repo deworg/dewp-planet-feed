@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
  * GitHub Plugin URI: https://github.com/deworg/dewp-planet-feed
  * License:           GNU General Public License v3
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * Release Asset: true
  *
  * Based upon DS_wpGrafie_WP_Planet_Feed class by Dominik Schilling (@ocean90).
  * https://github.com/ocean90/wpgrafie-theme/blob/master/classes/class-ds-wpgrafie-wp-planet-feed.php
