@@ -1,0 +1,32 @@
+{
+  "name": "dewp-planet-feed",
+  "version": "0.4.0-beta",
+  "description": "Generates a custom RSS2 feed “dewp-planet”. Adds a checkbox to the Publish meta box in order to expicitely add a post to that custom feed.",
+  "scripts": {
+    "build:production": "webpack --config webpack.config.production.js",
+    "build:dev": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deworg/dewp-planet-feed.git"
+  },
+  "author": "Florian Brinkmann, Caspar Hübinger, Dominik Schilling",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/deworg/dewp-planet-feed/issues"
+  },
+  "homepage": "https://github.com/deworg/dewp-planet-feed#readme",
+  "devDependencies": {
+    "@wordpress/babel-preset-default": "^1.3.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "babel-plugin-lodash": "^3.3.4",
+    "lodash": "^4.17.10",
+    "lodash-webpack-plugin": "^0.11.5"
+  }
+}

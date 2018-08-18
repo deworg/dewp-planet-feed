@@ -3,13 +3,14 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
 /**
  * Plugin Name:       DEWP Planet Feed (Beta)
  * Description:       Generates a custom feed “dewp-planet” for posts. Adds a checkbox to the Publish meta box in order to explicitly add a post to that custom feed.
- * Version:           0.4-beta
+ * Version:           0.5.0
  * Author:            dewp#planet team
  * Author URI:        https://dewp.slack.com/messages/planet/
  * Plugin URI:        https://github.com/deworg/dewp-planet-feed
  * GitHub Plugin URI: https://github.com/deworg/dewp-planet-feed
  * License:           GNU General Public License v3
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * Release Asset: true
  *
  * Based upon DS_wpGrafie_WP_Planet_Feed class by Dominik Schilling (@ocean90).
  * https://github.com/ocean90/wpgrafie-theme/blob/master/classes/class-ds-wpgrafie-wp-planet-feed.php
@@ -91,6 +92,9 @@ class DEWP_Planet_Feed {
 		self::$maybe_activation = get_option( 'wp_planet_feed__activated', false );
 
 		add_action( 'init', array( __CLASS__, 'init' ) );
+
+		// Register the meta.
+		add_action( 'init', array( __CLASS__, 'register_show_in_feed_meta' ) );
 	}
 
 	/**
@@ -137,8 +141,28 @@ class DEWP_Planet_Feed {
 			array( __CLASS__, 'admin_enqueue_scripts' )
 		);
 
+		// Enqueue Gutenberg script.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_assets' ) );
+
 		// Get feed content.
 		add_action( 'pre_get_posts', array( __CLASS__, 'feed_content' ) );
+	}
+
+	/**
+	 * Register the meta data and make it visible via REST API.
+	 * @since 0.5.0
+	 */
+	public static function register_show_in_feed_meta() {
+		register_post_meta(
+			'post',
+			'wpf_show_in_dewp_planet_feed',
+			[
+				'type' => 'boolean',
+				'description' => 'Ob der Beitrag im DEWP-Planet erscheinen soll oder nicht.',
+				'single' => true,
+				'show_in_rest' => true,
+			]
+		);
 	}
 
 	/**
@@ -196,8 +220,17 @@ class DEWP_Planet_Feed {
 			$file_data['v']
 		);
 		wp_enqueue_style( 'dewp-planet-post' );
-
 		return $hook;
+	}
+
+	/**
+	 * Enqueue assets for the Gutenberg editor.
+	 * @since  0.5.0
+	 */
+	public static function enqueue_block_editor_assets() {
+		$file_data  = get_file_data( __FILE__, array( 'v' => 'Version' ) );
+		$assets_url = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/';
+		wp_enqueue_script( 'dewp-planet-functions', $assets_url . 'js/functions.js', array( 'wp-components', 'wp-editor', 'wp-core-blocks', 'wp-nux', 'wp-edit-post' ), $file_data['v'] );
 	}
 
 	/**
@@ -252,8 +285,22 @@ class DEWP_Planet_Feed {
 		if ( ! $query->is_feed( 'dewp-planet' ) ) {
 			return;
 		}
+
 		$query->set( 'post_type', self::$post_types );
-		$query->set( 'meta_key', '_wpf_show_in_dewp_planet_feed' );
+
+		$meta_query = array(
+			'relation' => 'OR',
+			array(
+				'key'     => 'wpf_show_in_dewp_planet_feed',
+				'value'   => 1,
+			),
+			array(
+				'key'     => '_wpf_show_in_dewp_planet_feed',
+				'value'   => 1,
+			),
+		);
+
+		$query->set( 'meta_query', $meta_query );
 
 		return $query;
 	}

@@ -1,7 +1,7 @@
 # DEWP Planet Feed #
 * Contributors:      Florian Brinkmann, Caspar Hübinger, Dominik Schilling
-* Requires at least: 3.8
-* Tested up to:      4.4.2
+* Requires at least: 4.9.8
+* Tested up to:      4.9.8
 * License:           GPLv3
 * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,6 +13,12 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 ---
 
 ## Changelog
+
+### 0.5.0 – 18.08.2018
+
+**The plugin requires WordPress 4.9.8 now**
+
+* Added Gutenberg support.
 
 ### 0.4
 * Fix: changed dependency for admin stylesheet from `edit` to `wp-admin`.

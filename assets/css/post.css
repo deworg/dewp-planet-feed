@@ -43,3 +43,30 @@
 .dewp-planet__add-to-feed:checked + .dewp-planet__label-text .dashicons-warning {
 	color: #dc3232;
 }
+
+/* Gutenberg rules */
+.edit-post-sidebar .dewp-planet > div {
+	position: relative;
+}
+
+.edit-post-sidebar .dewp-planet label {
+	padding-right: 2em;
+}
+
+.edit-post-sidebar .dewp-planet__help-link {
+	position: absolute;
+	right: -5px;
+	top: -8px;
+}
+
+.edit-post-sidebar .dewp-planet .-is-checked ~ .dewp-planet__label-notice {
+	max-height: 10em;
+	padding: 6px 0 8px;
+}
+
+.edit-post-sidebar .dewp-planet .-is-checked ~ .dewp-planet__label-notice .dashicons-warning {
+	color: #dc3232;
+	margin: -1px 5px 0 -2px;
+	position: relative;
+	visibility: visible;
+}
