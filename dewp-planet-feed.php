@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) or die( 'You know better.' );
 /**
  * Plugin Name:       DEWP Planet Feed (Beta)
  * Description:       Generates a custom feed “dewp-planet” for posts. Adds a checkbox to the Publish meta box in order to explicitly add a post to that custom feed.
- * Version:           0.5.0
+ * Version:           0.5.1
  * Author:            dewp#planet team
  * Author URI:        https://dewp.slack.com/messages/planet/
  * Plugin URI:        https://github.com/deworg/dewp-planet-feed
@@ -230,7 +230,7 @@ class DEWP_Planet_Feed {
 	public static function enqueue_block_editor_assets() {
 		$file_data  = get_file_data( __FILE__, array( 'v' => 'Version' ) );
 		$assets_url = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/';
-		wp_enqueue_script( 'dewp-planet-functions', $assets_url . 'js/functions.js', array( 'wp-components', 'wp-editor', 'wp-core-blocks', 'wp-nux', 'wp-edit-post' ), $file_data['v'] );
+		wp_enqueue_script( 'dewp-planet-functions', $assets_url . 'js/functions.js', array( 'wp-blocks', 'wp-element', 'wp-edit-post' ), $file_data['v'] );
 	}
 
 	/**
