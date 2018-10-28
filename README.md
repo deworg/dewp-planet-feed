@@ -14,7 +14,7 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 
 ## Changelog
 
-### 0.5.1– 28.10.2018
+### 0.5.1 – 28.10.2018
 
 * Fix: Make it work with current Gutenberg version.
 
