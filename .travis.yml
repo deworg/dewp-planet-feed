@@ -2,7 +2,7 @@ language: php
 php:
 - '7.3'
 script:
-- 
+- echo "No script needed"
 before_deploy:
 - npm install --silent
 - npm run build:production
