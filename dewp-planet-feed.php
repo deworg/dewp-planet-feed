@@ -153,16 +153,18 @@ class DEWP_Planet_Feed {
 	 * @since 0.5.0
 	 */
 	public static function register_show_in_feed_meta() {
-		register_post_meta(
-			'post',
-			'wpf_show_in_dewp_planet_feed',
-			[
-				'type' => 'boolean',
-				'description' => 'Ob der Beitrag im DEWP-Planet erscheinen soll oder nicht.',
-				'single' => true,
-				'show_in_rest' => true,
-			]
-		);
+		foreach ( self::$post_types as $post_type ) {
+			register_post_meta(
+				$post_type,
+				'wpf_show_in_dewp_planet_feed',
+				[
+					'type' => 'boolean',
+					'description' => 'Ob der Beitrag im DEWP-Planet erscheinen soll oder nicht.',
+					'single' => true,
+					'show_in_rest' => true,
+				]
+			);
+		}
 	}
 
 	/**
