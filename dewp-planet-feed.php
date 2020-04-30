@@ -230,6 +230,9 @@ class DEWP_Planet_Feed {
 	 * @since  0.5.0
 	 */
 	public static function enqueue_block_editor_assets() {
+		if ( ! in_array( get_post_type(), self::$post_types ) ) {
+			return;
+		}
 		$file_data  = get_file_data( __FILE__, array( 'v' => 'Version' ) );
 		$assets_url = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/';
 		wp_enqueue_script( 'dewp-planet-functions', $assets_url . 'js/functions.js', array( 'wp-blocks', 'wp-element', 'wp-edit-post' ), $file_data['v'] );
