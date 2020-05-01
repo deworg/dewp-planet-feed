@@ -71,24 +71,6 @@ class DEWP_Planet_Feed {
 	 */
 	public function __construct() {
 
-		/**
-		* Filterable post types.
-		* @since 0.1
-		*/
-		self::$post_types = apply_filters(
-			'wp_planet_feed__post_types',
-			array( 'post' )
-		);
-
-		/**
-		* Filterable capability to enable checkbox.
-		* @since 0.1
-		*/
-		self::$capability = apply_filters(
-			'wp_planet_feed__capability',
-			'publish_posts'
-		);
-
 		self::$maybe_activation = get_option( 'wp_planet_feed__activated', false );
 
 		add_action( 'init', array( __CLASS__, 'init' ) );
@@ -122,6 +104,24 @@ class DEWP_Planet_Feed {
 	 * @return void
 	 */
 	public static function init() {
+
+		/**
+		* Filterable post types.
+		* @since 0.1
+		*/
+		self::$post_types = apply_filters(
+			'wp_planet_feed__post_types',
+			array( 'post' )
+		);
+
+		/**
+		* Filterable capability to enable checkbox.
+		* @since 0.1
+		*/
+		self::$capability = apply_filters(
+			'wp_planet_feed__capability',
+			'publish_posts'
+		);
 
 		// Add custom feed.
 		add_feed( 'dewp-planet', array( __CLASS__, 'feed_template' ) );
