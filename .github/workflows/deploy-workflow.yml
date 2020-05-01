@@ -32,7 +32,7 @@ jobs:
         rm -rf dewp-planet-feed
     - name: Get Release
       id: get_release
-      uses: bruceadams/get-release@v1
+      uses: actions/get-release@v1
     - name: Upload ZIP to release.
       uses: actions/upload-release-asset@v1
       with:
