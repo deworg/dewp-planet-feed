@@ -1,0 +1,39 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Deployment
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - name: Install dependencies
+      run: |
+        npm install --silent
+        npm run build:production
+    - name: Create deployment ZIP
+      run: |
+        mkdir -p dewp-planet-feed
+        rsync -rav --exclude-from='.rsync-exclude' --delete-excluded ./ dewp-planet-feed
+        zip -r dewp-planet-feed.zip dewp-planet-feed/
+        rm -rf dewp-planet-feed
+    - name: Upload ZIP to release.
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.ref }}/assets?name=dewp-planet-feed.zip
+        assets_path: ./dewp-planet-feed.zip
+        asset_name: dewp-planet-feed.zip
+        asset_content_type: application/zip
