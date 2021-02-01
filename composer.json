@@ -1,0 +1,25 @@
+{
+    "name": "deworg/dewp-planet-feed",
+    "description": "WordPress Plugin: DEWP Planet Feed",
+    "type": "wordpress-plugin",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Florian Brinkmann",
+        },
+        {
+            "name": "Caspar Hübinger",
+        },
+        {
+            "name": "Dominik Schilling",
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0"
+    }
+}
