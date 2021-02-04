@@ -10,7 +10,7 @@
                 "target": "./assets/",
 				"adapter": "gh-release-zip",
 				"config": {
-					"repository": "goaround/dewp-planet-feed"
+					"repository": "deworg/dewp-planet-feed"
 				}
             }
         }
