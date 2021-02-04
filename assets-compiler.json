@@ -1,0 +1,18 @@
+{
+    "script": "build:production",
+    "pre-compiled": {
+        "env": {
+            "root": {
+                "adapter": false
+            },
+            "$default": {
+                "source": "assets",
+                "target": "./assets/",
+				"adapter": "gh-release-zip",
+				"config": {
+					"repository": "goaround/dewp-planet-feed"
+				}
+            }
+        }
+    }
+}

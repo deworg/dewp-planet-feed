@@ -17,6 +17,13 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.0"
+        "composer/installers": "^1.0",
+        "inpsyde/composer-assets-compiler": "^2.0"
+    },
+    "extra": {
+        "composer-asset-compiler": {
+            "dependencies": "install",
+            "script": "build:production"
+        }
     }
 }
