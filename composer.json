@@ -4,13 +4,16 @@
     "type": "wordpress-plugin",
     "authors": [
         {
-            "name": "Florian Brinkmann",
+            "name": "Florian Brinkmann"
         },
         {
-            "name": "Caspar Hübinger",
+            "name": "Caspar Hübinger"
         },
         {
-            "name": "Dominik Schilling",
+            "name": "Dominik Schilling"
+        },
+        {
+            "name": "Torsten Landsiedel"
         }
     ],
     "require": {

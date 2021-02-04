@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/deworg/dewp-planet-feed.git"
   },
-  "author": "Florian Brinkmann, Caspar Hübinger, Dominik Schilling",
+  "author": "Florian Brinkmann, Caspar Hübinger, Dominik Schilling, Torsten Landsiedel",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/deworg/dewp-planet-feed/issues"
