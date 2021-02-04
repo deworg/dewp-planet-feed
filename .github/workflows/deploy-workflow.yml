@@ -29,7 +29,7 @@ jobs:
         mkdir -p dewp-planet-feed
         rsync -rav --exclude-from='.rsync-exclude' --delete-excluded ./ dewp-planet-feed
         zip -r dewp-planet-feed.zip dewp-planet-feed/
-        zip -jr assets.zip dewp-planet-feed/assets/*
+        zip -r assets.zip dewp-planet-feed/assets/*
         rm -rf dewp-planet-feed
     - name: Get Release
       id: get_release
