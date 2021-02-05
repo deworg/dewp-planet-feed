@@ -29,6 +29,9 @@ jobs:
         mkdir -p dewp-planet-feed
         rsync -rav --exclude-from='.rsync-exclude' --delete-excluded ./ dewp-planet-feed
         zip -r dewp-planet-feed.zip dewp-planet-feed/
+        cd dewp-planet-feed/assets
+        zip -r ../../assets.zip ./*
+        cd ../..
         rm -rf dewp-planet-feed
     - name: Get Release
       id: get_release
@@ -39,4 +42,11 @@ jobs:
         upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: ./dewp-planet-feed.zip
         asset_name: dewp-planet-feed.zip
+        asset_content_type: application/zip
+    - name: Upload assets ZIP to release.
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: ./assets.zip
+        asset_name: assets.zip
         asset_content_type: application/zip

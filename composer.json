@@ -1,0 +1,29 @@
+{
+    "name": "deworg/dewp-planet-feed",
+    "description": "WordPress Plugin: DEWP Planet Feed",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Florian Brinkmann"
+        },
+        {
+            "name": "Caspar Hübinger"
+        },
+        {
+            "name": "Dominik Schilling"
+        },
+        {
+            "name": "Torsten Landsiedel"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0",
+        "inpsyde/composer-assets-compiler": "^2.0"
+    },
+    "extra": {
+        "composer-asset-compiler": {
+            "dependencies": "install",
+            "script": "build:production"
+        }
+    }
+}
