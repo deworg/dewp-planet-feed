@@ -13,9 +13,10 @@ Generates a custom feed `dewp-planet` for posts. Adds a checkbox to the _Publish
 ---
 
 ## Installation
+### Via SFTP or backend
 1. Download the asset `dewp-planet-feed.zip` from the [latest release](https://github.com/deworg/dewp-planet-feed/releases/latest).
-1. Upload the folder `dewp-planet-feed` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Upload the folder `dewp-planet-feed` to the `/wp-content/plugins/` directory, or directly upload the ZIP through the »Plugins« › »Add new« › »Upload plugin« screen in the WordPress backend.
+1. Activate the plugin through the »Plugins« menu in WordPress.
 
 ### With Composer
 If you would like to pull the plugin with Composer (e.g. with [Bedrock](https://roots.io/bedrock/)) you have to compile the JavaScript assets yourself or use the [Composer Asset Compiler](https://github.com/inpsyde/composer-asset-compiler). This plugin is compatible and even provides the pre-compiled assets for each release.
@@ -24,27 +25,27 @@ To pull this Plugin with Composer, follow these steps:
 
 1. Add `git@github.com:deworg/dewp-planet-feed.git` as an addional Github repository to your `composer.json`:
 ```json
-	"repositories": [
+    "repositories": [
         {
-			"type": "github",
-			"url": "git@github.com:deworg/dewp-planet-feed.git"
-		}
-	],
+            "type": "github",
+            "url": "git@github.com:deworg/dewp-planet-feed.git"
+        }
+    ],
 ```
 2. Require the plugin
 ```bash
 $ composer require deworg/dewp-planet-feed
 ```
-3. Compile the assets with `npm run build:production` yourself or setup the [Composer Asset Compiler](https://github.com/inpsyde/composer-asset-compiler)
+3. Compile the assets with `npm install && npm run build:production` in the plugin directory or setup the [Composer Asset Compiler](https://github.com/inpsyde/composer-asset-compiler) with:
 ```bash
 $ composer require inpsyde/composer-assets-compiler
 ```
-4. If you choose the Composer Asset Compiler, run `composer compile-assets` each time or activate auto run in your `composer.json`:
+4. If you choose the Composer Asset Compiler, run `composer compile-assets` after every plugin update time or activate auto run in your `composer.json`:
 ```json
-	"extra": {
+    "extra": {
         "composer-asset-compiler": {
-			"auto-run": true,
-		}
+            "auto-run": true,
+        }
     }
 ```
 5. Done. If you choose auto run, try it with `composer update` or `composer install`
