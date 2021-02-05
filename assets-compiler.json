@@ -8,10 +8,10 @@
             "$default": {
                 "source": "assets",
                 "target": "./assets/",
-				"adapter": "gh-release-zip",
-				"config": {
-					"repository": "deworg/dewp-planet-feed"
-				}
+                "adapter": "gh-release-zip",
+                "config": {
+                    "repository": "deworg/dewp-planet-feed"
+                }
             }
         }
     }
