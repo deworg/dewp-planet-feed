@@ -1,7 +1,7 @@
 # DEWP Planet Feed #
 * Contributors:      Florian Brinkmann, Caspar Hübinger, Dominik Schilling
 * Requires at least: 4.9.8
-* Tested up to:      4.9.8
+* Tested up to:      5.6.1
 * License:           GPLv3
 * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,11 @@ $ composer require inpsyde/composer-assets-compiler
 ---
 
 ## Changelog
+
+### 1.0.0 – 13.02.2021
+
+* Enhancement: Add possibility to install via composer (see *Installation* part of readme for instructions) – thanks @goaround.
+* Fix: Make `wp_planet_feed__post_types` work with Gutenberg.
 
 ### 0.5.1 – 28.10.2018
 
