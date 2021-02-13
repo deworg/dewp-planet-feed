@@ -1,5 +1,5 @@
 # DEWP Planet Feed #
-* Contributors:      Florian Brinkmann, Caspar Hübinger, Dominik Schilling
+* Contributors:      Florian Brinkmann, Caspar Hübinger, Dominik Schilling, Torsten Landsiedel
 * Requires at least: 4.9.8
 * Tested up to:      5.6.1
 * License:           GPLv3
