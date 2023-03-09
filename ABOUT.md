@@ -27,4 +27,4 @@ Nur wenn dein Feed bereits in den _Planet_ aufgenommen wurde. Dafür ist eine ma
 ### Wie kommt mein Blog-Feed in den DEWP-Planet?
 Die Betreueung des DEWP-Planets obliegt einem Team von Freiwilligen der [deutschsprachigen WordPress Community](https://de.wordpress.org/). Den Slack-Channel des Teams findest du hier: [dewp.slack.com/messages/planet/](https://dewp.slack.com/messages/planet/)
 
-Das Team des Planet wird initiativ aktiv und fügt die Feeds geeigneter Blogs in regelmäßigen Abständen zum  DEWP-Planet hinzu. Die Betreiber_innen der entsprechenden Blogs werden zuvor nach ihrem Einverstädnis gefragt. Auch behält sich das Team vor, jederzeit und ohne Angabe von Gründen einzelne Feeds aus dem _DEWP-Planet_ zu entfernen.
+Das Team des Planet wird initiativ aktiv und fügt die Feeds geeigneter Blogs in regelmäßigen Abständen zum  DEWP-Planet hinzu. Die Betreiber_innen der entsprechenden Blogs werden zuvor nach ihrem Einverständnis gefragt. Auch behält sich das Team vor, jederzeit und ohne Angabe von Gründen einzelne Feeds aus dem _DEWP-Planet_ zu entfernen.
