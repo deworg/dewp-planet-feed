@@ -255,7 +255,7 @@ class DEWP_Planet_Feed {
 		if ( absint( $_POST['post_ID'] ) !== $post_id ) {
 			return $post_id;
 		}
-		if ( ! in_array( $_POST['post_type'], self::$post_types ) ) {
+		if ( isset( $_POST['post_type'] ) && ! in_array( $_POST['post_type'], self::$post_types ) ) {
 			return $post_id;
 		}
 		if ( ! current_user_can( self::$capability ) ) {
